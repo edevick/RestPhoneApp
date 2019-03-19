@@ -1,7 +1,10 @@
 package com.RestPhoneApp.RestPhoneApp.config;
 
+
 import com.RestPhoneApp.RestPhoneApp.domain.User;
 import com.RestPhoneApp.RestPhoneApp.repo.UserRepository;
+
+
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 import org.springframework.context.annotation.Bean;
@@ -30,10 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PrincipalExtractor principalExtractor(UserRepository userDetailsRepo) {
         return map -> {
             String id = (String) map.get("sub");
-
             User user = userDetailsRepo.findById(id).orElseGet(() -> {
                 User newUser = new User();
-
                 newUser.setId(id);
                 newUser.setName((String) map.get("name"));
                 newUser.setEmail((String) map.get("email"));

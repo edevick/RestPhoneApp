@@ -13,10 +13,7 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-/*    @Embedded
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User author;*/
+
     private String nameContact;
     private String lastNameContact;
     private String phoneContact;
@@ -29,14 +26,6 @@ public class Contact {
     public void setId(Long id) {
         this.id = id;
     }
-/*
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }*/
 
     public String getNameContact() {
         return nameContact;
